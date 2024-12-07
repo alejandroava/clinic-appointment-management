@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
+
+
+    public function dashboard()
+    {
+        return view('pages.patient.dashboard');
+    }
     /**
      * Display a listing of the resource.
      */
