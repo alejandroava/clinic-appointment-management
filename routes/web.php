@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,5 @@ Route::middleware([
 
 Route::group(['prefix' => 'paciente'],function(){
     Route::get('/dashboard',[PatientController::class, 'dashboard'])->name('patient.dasboard');
+    Route::get('/pedir-cita',[AppointmentController::class,'create'])->name('appointment.create');
 });

@@ -5,7 +5,7 @@
 @section('content_header')
     <h1>Inicio</h1>
 @stop
-
+s
 @section('content')
     <p>Welcome to this beautiful admin panel.</p>
 @stop

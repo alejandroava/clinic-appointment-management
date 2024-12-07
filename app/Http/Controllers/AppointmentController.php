@@ -20,7 +20,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('Pages.Appointment.create');
     }
 
     /**
