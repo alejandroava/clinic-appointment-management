@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
@@ -20,7 +22,21 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('Pages.Appointment.create');
+
+        $patient = Auth::user();
+       
+
+        $doctors = Doctor::with('user')->where('status', 'available')->get()->map(function($doctor){
+            return [
+                'id' => $doctor->id,
+                'name' => $doctor->user->name . ' ' . $doctor->user->lastname
+            ];
+        });
+
+        return view('pages.appointment.create',[
+            'patient' => $patient,
+            'doctors' => $doctors
+        ]);
     }
 
     /**

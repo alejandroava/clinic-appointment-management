@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <h2>Agendar Nueva Cita</h2>
-    <form id="appointment-form" action="{{ route('pages.appointment.create') }}" method="POST">
+    <form id="appointment-form" action="" method="POST">
         @csrf
         
         <div class="form-group">
             <label>Paciente</label>
-            <input type="text" class="form-control" value="{{ Auth::user()->name }} {{ Auth::user()->lastname }}" readonly>
+            <input type="text" class="form-control" value="{{ $patient->name  ?? 'Sin nombre'}}" readonly>
         </div>
 
         <div class="form-group">
@@ -59,7 +59,7 @@ $(document).ready(function() {
         $('#date').prop('disabled', false).html('<option>Cargando fechas...</option>');
         
         $.ajax({
-            url: '{{ route("appointments.available-dates") }}',
+            url: '',
             method: 'GET',
             data: { doctor_id: doctorId },
             success: function(dates) {
@@ -80,7 +80,7 @@ $(document).ready(function() {
         $('#start_time').prop('disabled', false).html('<option>Cargando horas...</option>');
         
         $.ajax({
-            url: '{{ route("appointments.available-times") }}',
+            url: '',
             method: 'GET',
             data: { 
                 doctor_id: doctorId,
