@@ -3,10 +3,19 @@
 namespace App\Models;
 
 use App\Models\MedicalRecords;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
+
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'blood_group'
+    ];
+    
     public function user()
     {
         return $this->belongsTo(User::class);

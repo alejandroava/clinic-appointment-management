@@ -21,7 +21,7 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'patient list appointments']);
         Permission::create(['name' => 'medical history']);
         
-        $patient = Role::create(['name' => 'patient']);
+        $patient = Role::firstOrCreate(['name' => 'patient']);
         $patient->givePermissionTo([
             'patient dashboard',
             'patient make medical appointment',
@@ -30,7 +30,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'medical history'
         ]);
 
-        $doctor = Role::create(['name' => 'doctor']);
+        $doctor = Role::firstOrCreate(['name' => 'doctor']);
         $doctor->givePermissionTo([
             'medical history',
             'doctor dashboard'

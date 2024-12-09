@@ -39,6 +39,22 @@ class AppointmentController extends Controller
         ]);
     }
 
+    public function getAvailableDates (Request $request)
+    {
+        $doctor = Doctor::findOrFail($request->doctor_id);
+
+        $availableDates = $this->getAvailableDatesForDoctor($doctor);
+
+        return response()->json($availableDates);
+    }
+
+    public function getAvailableDatesForDoctor()
+    {
+        //
+    }
+
+    
+
     /**
      * Store a newly created resource in storage.
      */

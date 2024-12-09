@@ -26,16 +26,16 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $dateOfBirth = $this->faker->dateTimeBetween('-80 years', '-18 years');
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'two_factor_secret' => null,
-            'two_factor_recovery_codes' => null,
+            'name' => $this->faker->firstName,
+            'lastname' => $this->faker->lastName,
+            'cedula' => $this->faker->unique()->numerify('##########'),
+            'email' => $this->faker->unique()->safeEmail,
+            'date_of_birth' => $dateOfBirth,
+            'age' => null,
+            'password' => bcrypt('password'), // o usa Hash::make()
             'remember_token' => Str::random(10),
-            'profile_photo_path' => null,
-            'current_team_id' => null,
         ];
     }
 
