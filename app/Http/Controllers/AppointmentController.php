@@ -16,9 +16,6 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointments = Appointment::where('status','scheduled')
-        ->with(['doctor', 'patient'])  // Cargar las relaciones
-        ->orderBy('date', 'asc')
-        ->orderBy('start_time', 'asc')
         ->get();
         
        
@@ -70,12 +67,12 @@ class AppointmentController extends Controller
     $currentDate = Carbon::now();
     $daysAhead = 14; // Días para buscar disponibilidad
 
-    // Obtener días laborales del doctor
+   
     $workDays = explode(',', $doctor->schedule->days_of_week);
     
     for ($i = 0; $i < $daysAhead; $i++) {
         $date = $currentDate->copy()->addDays($i);
-        $dayOfWeek = $this->convertDayToSpanish($date->format('l')); // Convierte al formato de la base de datos
+        $dayOfWeek = $this->convertDayToSpanish($date->format('l')); 
         
         if (in_array($dayOfWeek, $workDays)) {
             $availableDates[] = $date->toDateString();
@@ -121,7 +118,7 @@ class AppointmentController extends Controller
         $slotStart = $scheduleStart->copy();
         $slotEnd = $scheduleStart->copy()->addMinutes($appointmentDuration);
 
-        // Verificar si el intervalo está libre
+        
         if ($this->isTimeSlotAvailableForDoctor($doctor, $date, $slotStart->format('H:i:s'), $slotEnd->format('H:i:s'))) {
             $availableTimeSlots[] = $slotStart->format('H:i:s');
         }
@@ -147,7 +144,7 @@ class AppointmentController extends Controller
 
     private function convertDayToSpanish($day)
     {
-        // Mapeo de días de la semana en inglés a español
+    
         $days = [
             'Monday' => 'Lunes',
             'Tuesday' => 'Martes',
@@ -158,7 +155,6 @@ class AppointmentController extends Controller
             'Sunday' => 'Domingo',
         ];
 
-        // Devolver el nombre del día en español o el mismo valor si no se encuentra
         return $days[$day] ?? $day;
     }
 
@@ -177,7 +173,7 @@ class AppointmentController extends Controller
         $patient = Auth::user();
 
         $appointment = Appointment::create([
-            'patient_id' => $patient->id,
+            'patient_id' => $patient->user->name,
             'doctor_id' => $validatedData['doctor_id'],
             'date' => $validatedData['date'],
             'start_time' => $validatedData['start_time'],

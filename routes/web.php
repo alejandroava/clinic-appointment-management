@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,10 @@ Route::group(['prefix' => 'paciente'],function(){
     Route::post('/pedir-cita',[AppointmentController::class,'store'])->name('appointment.store');
     Route::get('citas-activas',[AppointmentController::class,'index'])->name('appointment.index');
     
-    // Route::get('/api/doctors/{doctor}/dates', [AppointmentController::class, 'availableDates']);
 });
+
+
+Route::group(['prefix' => 'medico'], function() {
+    Route::get('/dashboard',[DoctorController::class,'dashboard'])->name('doctor.dashboard');
+});
+

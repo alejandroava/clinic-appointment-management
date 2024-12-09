@@ -299,66 +299,7 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type' => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
-
-        // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-       ['header' => 'Citas Médicas'],
-    [
-        'text' => 'Pedir Cita',
-        'url' => 'paciente/pedir-cita',
-        'icon' => 'fas fa-calendar-plus',
-    ],
-    [
-        'text' => 'Citas Activas',
-        'url' => 'paciente/citas-activas',
-        'icon' => 'fas fa-calendar-check',
-        'label' => 'Nuevo',
-        'label_color' => 'success',
-    ],
-    [
-        'text' => 'Historial de Citas',
-        'url' => 'paciente/historial-citas',
-        'icon' => 'fas fa-history',
-    ],
-
-    // Sección de Historial Médico
-    ['header' => 'Historial Médico'],
-    [
-        'text' => 'Expediente Médico',
-        'url' => 'paciente/expediente',
-        'icon' => 'far fa-file-medical',
-        'label_color' => 'info',
-    ],
-    [
-        'text' => 'Exámenes y Resultados',
-        'url' => 'paciente/resultados',
-        'icon' => 'fas fa-file-medical-alt',
-    ],
-
-        ['header' => 'Mi cuenta'],
-        [
-            'text' => 'Perfil',
-            'url' => 'profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Salir de la cuenta',
-            'url' => 'login',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+      
     ],
 
     /*
