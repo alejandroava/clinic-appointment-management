@@ -31,5 +31,7 @@ Route::group(['prefix' => 'paciente'],function(){
     Route::get('/fechas-disponibles', [AppointmentController::class, 'getAvailableDates'])->name('appointments.available-dates');
     Route::get('horas-disponibles',[AppointmentController::class, 'getAvailableTimeSlots'])->name('appointments.available-time');
     Route::post('/pedir-cita',[AppointmentController::class,'store'])->name('appointment.store');
+    Route::get('citas-activas',[AppointmentController::class,'index'])->name('appointment.index');
+    
     // Route::get('/api/doctors/{doctor}/dates', [AppointmentController::class, 'availableDates']);
 });

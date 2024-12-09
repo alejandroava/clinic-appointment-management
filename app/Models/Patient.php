@@ -28,6 +28,6 @@ class Patient extends Model
 
        public function appointment()
     {
-        return $this->hasOne(Appointment::class);
+        return $this->hasMany(Appointment::class);
     }
 }

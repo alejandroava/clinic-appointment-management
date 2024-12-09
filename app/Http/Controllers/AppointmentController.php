@@ -15,7 +15,14 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $appointments = Appointment::where('status','scheduled')
+        ->with(['doctor', 'patient'])  // Cargar las relaciones
+        ->orderBy('date', 'asc')
+        ->orderBy('start_time', 'asc')
+        ->get();
+        
+       
+        return view('pages.appointment.index',compact('appointments'));
     }
 
     /**
