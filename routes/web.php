@@ -28,4 +28,8 @@ Route::middleware([
 Route::group(['prefix' => 'paciente'],function(){
     Route::get('/dashboard',[PatientController::class, 'dashboard'])->name('patient.dasboard');
     Route::get('/pedir-cita',[AppointmentController::class,'create'])->name('appointment.create');
+    Route::get('/fechas-disponibles', [AppointmentController::class, 'getAvailableDates'])->name('appointments.available-dates');
+    Route::get('horas-disponibles',[AppointmentController::class, 'getAvailableTimeSlots'])->name('appointments.available-time');
+    Route::post('/pedir-cita',[AppointmentController::class,'store'])->name('appointment.store');
+    // Route::get('/api/doctors/{doctor}/dates', [AppointmentController::class, 'availableDates']);
 });

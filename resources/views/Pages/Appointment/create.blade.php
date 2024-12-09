@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Agendar Nueva Cita</h2>
-    <form id="appointment-form" action="" method="POST">
+    <form id="appointment-form" action="{{ route('appointment.store') }}" method="POST">
         @csrf
         
         <div class="form-group">
@@ -59,7 +59,7 @@ $(document).ready(function() {
         $('#date').prop('disabled', false).html('<option>Cargando fechas...</option>');
         
         $.ajax({
-            url: '',
+            url: '{{route('appointments.available-dates')}}',
             method: 'GET',
             data: { doctor_id: doctorId },
             success: function(dates) {
@@ -80,7 +80,7 @@ $(document).ready(function() {
         $('#start_time').prop('disabled', false).html('<option>Cargando horas...</option>');
         
         $.ajax({
-            url: '',
+            url: '{{route('appointments.available-time')}}',
             method: 'GET',
             data: { 
                 doctor_id: doctorId,

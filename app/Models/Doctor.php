@@ -4,8 +4,9 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Schedule;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Appointment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Doctor extends Model
 {
@@ -14,7 +15,7 @@ class Doctor extends Model
 
     protected $fillable = [
         'user_id',
-        'sheduled_id',
+        'schedule_id',
         'status',
     ];
 
@@ -28,8 +29,8 @@ class Doctor extends Model
         return $this->belongsTo(Schedule::class);
     }
 
-    public function appointment()
+    public function appointments()
     {
-        return $this->hasOne(Appointment::class);
+        return $this->hasMany(Appointment::class);
     }
 }

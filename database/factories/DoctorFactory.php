@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Schedule;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +20,7 @@ class DoctorFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'schedule_id' => null,
+            'schedule_id' => Schedule::factory(),
             'status' => 'available',
         ];
     }

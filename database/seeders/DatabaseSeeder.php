@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(RolesAndPermissionsSeeder::class);
 
-        Patient::factory(10)->create()->each(function($patient){
-             $patient->user->assignRole('patient');
-         });
+        // Patient::factory(10)->create()->each(function($patient){
+        //      $patient->user->assignRole('patient');
+        //  });
 
         Doctor::factory(10)->create()->each(function($doctor){
             $doctor->user->assignRole('doctor');
